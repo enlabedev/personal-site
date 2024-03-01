@@ -106,6 +106,111 @@ body {
   border-right: 10px solid var(--blue-light);
   animation: border-left var(--animation-time) linear 3s;
 }
+
+.power-switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--width)/4);
+  height: calc(var(--height)/4);
+}
+.power-switch .button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.power-switch .button:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: radial-gradient(circle closest-side, var(--blue-light), transparent);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: perspective(1px) translateZ(0);
+  backface-visibility: hidden;
+}
+.power-switch .button .power-on,
+.power-switch .button .power-off {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  fill: none;
+  stroke: var(--blue-light);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.power-switch .button .power-on .line,
+.power-switch .button .power-off .line {
+  opacity: 1;
+}
+.power-switch .button .power-on .circle,
+.power-switch .button .power-off .circle {
+  opacity: 1;
+  transform: rotate(-58deg);
+  transform-origin: center calc(var(--height)/7.5);
+  stroke-dasharray: 220;
+  stroke-dashoffset: 40;
+}
+.power-switch .button .power-on {
+  stroke: var(--blue);
+  filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.8));
+}
+.power-switch .button .power-on .line {
+  opacity: 0;
+  transition: opacity 0.3s ease 1s;
+}
+.power-switch .button .power-on .circle {
+  opacity: 1;
+  stroke-dashoffset: 220;
+  transition: transform 0s ease, stroke-dashoffset 1s ease 0s;
+}
+.power-switch .checkbox {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0;
+}
+.power-switch .checkbox:checked + .button:after {
+  opacity: 0.15;
+  backface-visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+.power-switch .checkbox:checked + .button .power-on,
+.power-switch .checkbox:checked + .button .power-off {
+  animation: click-animation 0.3s ease forwards;
+  transform: scale(1);
+}
+.power-switch .checkbox:checked + .button .power-on .line,
+.power-switch .checkbox:checked + .button .power-off .line {
+  animation: line-animation 0.8s ease-in forwards;
+}
+.power-switch .checkbox:checked + .button .power-on .circle,
+.power-switch .checkbox:checked + .button .power-off .circle {
+  transform: rotate(302deg);
+}
+.power-switch .checkbox:checked + .button .power-on .line {
+  opacity: 1;
+  transition: opacity 0.05s ease-in 0.55s;
+}
+.power-switch .checkbox:checked + .button .power-on .circle {
+  transform: rotate(302deg);
+  stroke-dashoffset: 40;
+  transition: transform 0.4s ease 0.2s, stroke-dashoffset 0.4s ease 0.2s;
+}
+
 .title {
   font-size: 2rem;
 }

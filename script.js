@@ -1,8 +1,18 @@
-document.addEventListener('DOMContentLoaded', async () => {
+ document.addEventListener('DOMContentLoaded', async () => {
   const blocks = document.querySelectorAll('.roles__item');
   let lastAnimationEnd = 0;
   const animationTime = .5;
   const animationSeconds = 1000;
+
+  let powerSwitch = document.getElementById('power-switch');
+  let body = document.querySelector('body');
+
+  powerSwitch.addEventListener('click', function() {
+    powerSwitch.classList.toggle('power-off');
+    powerSwitch.classList.toggle('power-on');
+    body.classList.toggle('dark');
+    body.classList.toggle('light');
+  });
 
   blocks.forEach((block, index) => {
     block.style.animationDelay = `${index + animationTime}s`;
