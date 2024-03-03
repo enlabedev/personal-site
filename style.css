@@ -1,3 +1,5 @@
+/* Mixins */
+/* Variables */
 :root {
   --light: #FFFFFF;
   --dark: #000;
@@ -30,6 +32,7 @@
   background: var(--light);
 }
 
+/* Colors */
 .text-red {
   color: var(--red-light);
 }
@@ -339,6 +342,35 @@
     bottom: auto;
   }
 }
+.side {
+  position: absolute;
+  box-sizing: border-box;
+}
+.side--top {
+  top: 0;
+  width: 0;
+  border-top: 3px solid var(--light);
+  animation: border-top 2s linear 0s infinite;
+}
+.side--right {
+  height: 0;
+  right: 0;
+  border-right: 3px solid var(--light);
+  animation: border-right 2s linear 1s infinite;
+}
+.side--bottom {
+  width: 0;
+  bottom: 0;
+  border-top: 3px solid var(--light);
+  animation: border-bottom 2s linear 2s infinite;
+}
+.side--left {
+  height: 0;
+  left: 0;
+  border-right: 3px solid var(--light);
+  animation: border-left 2s linear 3s infinite;
+}
+
 .page {
   min-height: 100vh;
 }
@@ -357,7 +389,6 @@
   width: fit-content;
   border: none;
   padding: 25px 20px;
-  border-radius: 50px;
   text-decoration: none;
   min-width: 300px;
   text-align: center;
@@ -367,9 +398,10 @@
 .callback--focus {
   background: var(--red-light);
   color: var(--light);
+  position: relative;
 }
 .callback--focus__arrow {
-  padding: 20px;
+  padding: 17px 20px;
   color: var(--red-light);
   background: var(--light);
   border-radius: 50%;
