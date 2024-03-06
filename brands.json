@@ -1,0 +1,33 @@
+[
+  { "src": "medialab.png", "width": 200, "alt": "Media Marketing Lab" },
+  { "src": "dart.png", "width": 200, "alt": "Dart" },
+  { "src": "la-mediatica.jpg", "width": 200, "alt": "La Mediatica" },
+  { "src": "liquid.png", "width": 200, "alt": "LIQUID" },
+  { "src": "initiative.jpeg", "width": 200, "alt": "Initiative" },
+  { "src": "volver-d6.jpeg", "width": 200, "alt": "Volver D6" },
+  { "src": "mccannworldgroup_logo.jpeg", "width": 200, "alt": "McCann Worldgroup" },
+  { "src": "craftworldwide_logo.jpeg", "width": 200, "alt": "Craft Worldwide" },
+  { "src": "fit-big-data.png", "width": 200, "alt": "Fit Big Data" },
+  { "src": "t2w.png", "width": 200, "alt": "T2W" },
+  { "src": "havas.png", "width": 200, "alt": "Havas" },
+  { "src": "battery-plaza.jpg", "width": 200, "alt": "Battery Plaza" },
+  { "src": "blaster.jpeg", "width": 200, "alt": "Blaster" },
+  { "src": "teamcore.png", "width": 200, "alt": "Teamcore" },
+
+
+  
+  { "src": "medialab.png", "width": 200, "alt": "Media Marketing Lab" },
+  { "src": "dart.png", "width": 200, "alt": "Dart" },
+  { "src": "la-mediatica.jpg", "width": 200, "alt": "La Mediatica" },
+  { "src": "liquid.png", "width": 200, "alt": "LIQUID" },
+  { "src": "initiative.jpeg", "width": 200, "alt": "Initiative" },
+  { "src": "volver-d6.jpeg", "width": 200, "alt": "Volver D6" },
+  { "src": "mccannworldgroup_logo.jpeg", "width": 200, "alt": "McCann Worldgroup" },
+  { "src": "craftworldwide_logo.jpeg", "width": 200, "alt": "Craft Worldwide" },
+  { "src": "fit-big-data.png", "width": 200, "alt": "Fit Big Data" },
+  { "src": "t2w.png", "width": 200, "alt": "T2W" },
+  { "src": "havas.png", "width": 200, "alt": "Havas" },
+  { "src": "battery-plaza.jpg", "width": 200, "alt": "Battery Plaza" },
+  { "src": "blaster.jpeg", "width": 200, "alt": "Blaster" },
+  { "src": "teamcore.png", "width": 200, "alt": "Teamcore" }
+]

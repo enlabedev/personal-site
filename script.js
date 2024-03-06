@@ -44,3 +44,33 @@
 
   roles.classList.add('d-none');
 });
+
+const button_read_more = document.querySelectorAll('.button-read-more');
+button_read_more.forEach((button, index) => {
+  button.addEventListener('click', function(event) {
+    event.preventDefault();
+    this.querySelectorAll('.fa-solid')[0].classList.toggle('active');
+    const parent = this.closest('.parent');
+    const read_more = parent.querySelectorAll('.read-more');
+    console.log(read_more)
+    read_more.forEach((read, index) => {
+      read.classList.toggle('active');
+    });
+  });
+});
+
+let ibrands = document.getElementById('brands')
+fetch('brands.json')
+  .then(response => response.json())
+  .then(brands => {
+    let html = `
+      ${brands.map(brand => `
+        <li class="brand">
+          <img src="images/${brand.src}" width="${brand.width}"  height="${brand.width}" alt="${brand.alt}" />
+        </li>
+      `).join('')}
+    `;
+    
+    ibrands.innerHTML = html;
+  })
+  .catch(error => console.error('Error:', error));
