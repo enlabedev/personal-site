@@ -57,6 +57,17 @@ const Site = (() => {
     await new Promise(resolve => setTimeout(resolve, animationSeconds)); 
 
     roles.classList.add('d-none');
+    const body = document.getElementById('body');
+    body.classList.remove('overflow-hidden');
+    if ('loading' in HTMLIFrameElement.prototype) {
+      const iframes = document.querySelectorAll('iframe[loading="lazy"]');
+  
+      iframes.forEach(iframe => {
+        iframe.src = iframe.dataset.src;
+      });
+  
+    }
+    
   };
 
   /**
