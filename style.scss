@@ -66,7 +66,7 @@
   --blue-light: #33CCFF;
   
   // Dimensions & Animation
-  --animation-time: 2s;
+  --animation-time: 1s;
   --width: 160px;
   --height: 160px;
   --image-slide: 200px;
@@ -138,15 +138,15 @@
     }
 
     &--right {
-      @include border-animation(right, 1s, var(--blue-light));
+      @include border-animation(right, 0.5s, var(--blue-light));
     }
 
     &--bottom {
-      @include border-animation(bottom, 2s, var(--blue-light));
+      @include border-animation(bottom, 1s, var(--blue-light));
     }
 
     &--left {
-      @include border-animation(left, 3s, var(--blue-light));
+      @include border-animation(left, 1.5s, var(--blue-light));
     }
   }
   .light &{
@@ -760,7 +760,7 @@
 
 .animate{
   &__animated{
-    animation-duration: 1s;
+    animation-duration: 0.25s; 
     animation-fill-mode: both;
   }
   &__fadeOut{

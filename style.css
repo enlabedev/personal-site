@@ -35,7 +35,7 @@
   --gray-lighter: #EEEEEE;
   --blue: #0066CC;
   --blue-light: #33CCFF;
-  --animation-time: 2s;
+  --animation-time: 1s;
   --width: 160px;
   --height: 160px;
   --image-slide: 200px;
@@ -107,19 +107,19 @@
 .roles__border--right {
   right: 0;
   border-right: 10px solid var(--blue-light);
-  animation: border-right var(--animation-time) linear 1s;
+  animation: border-right var(--animation-time) linear 0.5s;
   height: 0;
 }
 .roles__border--bottom {
   bottom: 0;
   border-bottom: 10px solid var(--blue-light);
-  animation: border-bottom var(--animation-time) linear 2s;
+  animation: border-bottom var(--animation-time) linear 1s;
   width: 0;
 }
 .roles__border--left {
   left: 0;
   border-left: 10px solid var(--blue-light);
-  animation: border-left var(--animation-time) linear 3s;
+  animation: border-left var(--animation-time) linear 1.5s;
   height: 0;
 }
 .light .roles {
@@ -763,7 +763,7 @@
   }
 }
 .animate__animated {
-  animation-duration: 1s;
+  animation-duration: 0.25s;
   animation-fill-mode: both;
 }
 .animate__fadeOut {

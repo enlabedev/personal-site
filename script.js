@@ -3,8 +3,9 @@
  * @namespace Site
  */
 const Site = (() => {
-  const animationTime = .5;
-  const animationSeconds = 1000;
+  const animationTime = .25;
+  const animationSeconds = 500;
+  const oneSecond = 1000;
   let lastAnimationEnd = 0;
 
   /**
@@ -29,32 +30,32 @@ const Site = (() => {
   const roles = async () => {
     const blocks = document.querySelectorAll('.roles__item');
     if (blocks.length === 0) return;
+    let animateTime = 0;
     blocks.forEach((block, index) => {
-      block.style.animationDelay = `${index + animationTime}s`;
-      lastAnimationEnd = (index + 1) + animationTime;
+      animateTime += animationTime;
+      block.style.animationDelay = `${animateTime}s`;
+      lastAnimationEnd = animateTime + animationTime;
     });
     const boxes = document.querySelectorAll('.roles__border').length;
-    const totalAnimationTimeForBoxes = boxes + 1;
+    const totalAnimationTimeForBoxes = boxes;
 
     const rolesText = document.getElementById('roles__text');
     const rolesLogo = document.getElementById('roles__logo');
     const roles = document.getElementById('roles');
 
-    await new Promise(resolve => setTimeout(resolve, lastAnimationEnd * animationSeconds));
+    await new Promise(resolve => setTimeout(resolve, lastAnimationEnd * oneSecond + animationTime));
 
     rolesText.classList.add('animate__fadeOut');
 
-    await new Promise(resolve => setTimeout(resolve, animationSeconds / 2));
+    await new Promise(resolve => setTimeout(resolve, animationSeconds * lastAnimationEnd));
 
     rolesText.classList.add('d-none');
     rolesLogo.classList.remove('d-none');
     rolesLogo.classList.add('animate__fadeInDown', 'animate__animated');
 
     await new Promise(resolve => setTimeout(resolve, totalAnimationTimeForBoxes * animationSeconds));
-
+    await new Promise(resolve => setTimeout(resolve, oneSecond)); 
     rolesLogo.classList.add('animate__fadeOutUp');
-
-    await new Promise(resolve => setTimeout(resolve, animationSeconds)); 
 
     roles.classList.add('d-none');
     const body = document.getElementById('body');
