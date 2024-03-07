@@ -1,0 +1,11 @@
+const Site=(()=>{let e=0,t=()=>{l(),document.addEventListener("DOMContentLoaded",async()=>{await a(),n()})},a=async()=>{let t=document.querySelectorAll(".roles__item");if(0===t.length)return;t.forEach((t,a)=>{t.style.animationDelay=`${a+.5}s`,e=a+1+.5});let a=document.querySelectorAll(".roles__border").length,l=a+1,n=document.getElementById("roles__text"),s=document.getElementById("roles__logo"),i=document.getElementById("roles");await new Promise(t=>setTimeout(t,1e3*e)),n.classList.add("animate__fadeOut"),await new Promise(e=>setTimeout(e,500)),n.classList.add("d-none"),s.classList.remove("d-none"),s.classList.add("animate__fadeInDown","animate__animated"),await new Promise(e=>setTimeout(e,1e3*l)),s.classList.add("animate__fadeOutUp"),await new Promise(e=>setTimeout(e,1e3)),i.classList.add("d-none")},l=()=>{let e=document.getElementById("power-switch");e.addEventListener("click",function(){e.classList.toggle("power-off"),e.classList.toggle("power-on");let t=document.querySelectorAll(".page");t.forEach((e,t)=>{e.classList.toggle("light")})})},n=()=>{let e=document.getElementById("brands");fetch("brands.json").then(e=>e.json()).then(t=>{let a=`
+          ${t.map(e=>`
+            <li class="brand">
+              <img loading="lazy" src="images/${e.src}" width="${e.width}"  height="${e.width}" alt="${e.alt}" />
+            </li>
+          `).join("")}
+        `;e.innerHTML=a}).catch(t=>{console.log(t);let a=`
+            <li class="brand text-center">
+              Las marcas no fueron cargadas
+            </li>
+        `;e.innerHTML=a})},s=(e,t)=>{e.preventDefault();var a,t=document.getElementById(t),l=window.scrollY,n=t.getBoundingClientRect().top-l;function s(e){var t=Math.min(e/1e3,1);window.scroll(0,l+n*t),t<1&&requestAnimationFrame(s)}requestAnimationFrame(s)},i=(e,t)=>{e.preventDefault(),t.querySelectorAll(".fa-solid")[0].classList.toggle("active");let a=t.closest(".parent"),l=a.querySelectorAll(".read-more");l.forEach((e,t)=>{e.classList.toggle("active")})};return{init:t,animateScroll:s,readMore:i}})();Site.init();
