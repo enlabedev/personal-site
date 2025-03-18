@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización - Modificaciones Web Color Centro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0096ff;
+            --secondary-color: #121212;
+            --accent-color: #00b3ff;
+            --text-color: #f8f9fa;
+            --light-gray: #333333;
+            --text-red: #ff4d4d;
+            --dark-bg: #000000;
+            --card-bg: #1a1a1a;
+            --border-color: #333333;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            color: var(--text-color);
+            background-color: var(--dark-bg);
+            padding: 0;
+            margin: 0;
+        }
+
+        .text-red {
+            color: var(--text-red);
+        }
+
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        .quotation-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            box-shadow: 0 0 30px rgba(0, 150, 255, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-bottom: 1px solid var(--light-gray);
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), transparent);
+        }
+
+        .developer-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .developer-name span {
+            color: var(--primary-color);
+        }
+
+        .developer-title {
+            color: #999;
+            font-weight: 300;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .client-info {
+            padding: 30px;
+            background-color: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-weight: 400;
+        }
+
+        .quotation-items {
+            padding: 30px;
+            background-color: var(--card-bg);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .table {
+            margin-bottom: 0;
+            color: var(--text-color);
+        }
+
+        .table thead th {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-weight: 500;
+            border: none;
+            padding: 12px 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .table tbody tr {
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .table tbody tr td {
+            padding: 12px 15px;
+            border: none;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .total-row {
+            font-weight: 700;
+            background-color: var(--light-gray) !important;
+        }
+
+        .service-details {
+            padding: 30px;
+            border-top: 1px solid var(--light-gray);
+            background-color: var(--card-bg);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title i {
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-weight: 500;
+            margin: 20px 0 10px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .detail-list {
+            list-style-type: none;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        .detail-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .detail-list li:before {
+            content: "+";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .phases {
+            margin-top: 30px;
+        }
+
+        .progress-bars {
+            margin-top: 20px;
+        }
+
+        .progress-item {
+            margin-bottom: 25px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+            background-color: var(--light-gray);
+        }
+
+        .progress-bar {
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .conditions {
+            margin: 30px 0;
+            background-color: rgba(0, 150, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid rgba(0, 150, 255, 0.2);
+        }
+
+        .warranty {
+            margin-top: 30px;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .note.text-red {
+            color: var(--text-red);
+        }
+
+        .footer {
+            padding: 25px 30px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 30px;
+            }
+
+            .developer-name {
+                font-size: 2rem;
+            }
+        }
+
+        .collapsible-section {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .collapsible-section:hover {
+            color: var(--accent-color);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .rotate-icon {
+            transition: transform 0.3s ease;
+            display: inline-block;
+            margin-left: 10px;
+            color: var(--primary-color);
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        .expanded {
+            max-height: 2000px;
+            opacity: 1;
+            transition: max-height 0.3s ease-out, opacity 0.4s ease;
+        }
+
+        .bold {
+            font-weight: 700;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 150, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .print-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 150, 255, 0.5);
+        }
+
+        /* Avatar image */
+        .avatar-container {
+            position: absolute;
+            top: 15px;
+            right: 40px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.5);
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            /*background-color: #666;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Badge styles */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.35em 0.65em;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-blue {
+            background-color: var(--primary-color);
+            color: var(--card-bg);
+        }
+
+        .badge-percent {
+            background-color: rgba(0, 150, 255, 0.15);
+            color: var(--primary-color);
+            border: 1px solid rgba(0, 150, 255, 0.3);
+        }
+
+        .approval-section {
+            margin-top: 40px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .signature-area {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .signature-box {
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            height: 80px;
+        }
+
+        .signature-title {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+
+        .blue__logo{fill:var(--primary-color)}
+
+        @media print {
+            body {
+                background-color: white;
+                color: #333;
+            }
+
+            .quotation-container {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+                background-color: white;
+                border: 1px solid #eee;
+            }
+
+            .header, .client-info, .service-details, .footer {
+                background-color: white;
+                color: #333;
+                border-color: #eee;
+            }
+
+            .header::after {
+                background: linear-gradient(90deg, #0096ff, transparent);
+                height: 2px;
+                display: block;
+            }
+
+            .section-title {
+                color: #0096ff;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 10px;
+            }
+
+            .section-subtitle {
+                color: #0063a9;
+            }
+
+            .info-label {
+                color: #0096ff;
+            }
+
+            .detail-list li:before {
+                color: #0096ff;
+            }
+
+            .collapsible-content {
+                max-height: none !important;
+                opacity: 1;
+            }
+
+            .collapsible-section i.rotate-icon {
+                display: none;
+            }
+
+            .table thead th {
+                background-color: #0096ff;
+
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: rgba(0, 150, 255, 0.05);
+            }
+
+            .total-row {
+                background-color: #f4f4f4 !important;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            .conditions {
+                background-color: rgba(0, 150, 255, 0.05);
+                border: 1px solid rgba(0, 150, 255, 0.1);
+            }
+
+            .badge-blue, .badge-percent {
+                background-color: rgba(0, 150, 255, 0.1);
+                color: #0096ff;
+                border: 1px solid #0096ff;
+            }
+
+            .blue__logo {
+                fill: #0096ff;
+            }
+
+            .avatar-container {
+                border: 2px solid #0096ff;
+                box-shadow: none;
+            }
+
+            .signature-box {
+                border-bottom: 1px dashed #0096ff;
+            }
+
+            .approval-section {
+                border: 1px solid #eee;
+                background-color: #f9f9f9;
+            }
+
+            /* Asegura que todas las secciones colapsables estén expandidas */
+            .collapsible-content {
+                display: block !important;
+            }
+
+            /* Mejora la visibilidad de los textos importantes */
+            .developer-name, .section-title, .total-row {
+                color: #000;
+            }
+
+            .developer-name span {
+                color: #0096ff;
+            }
+
+            /* Ajustes para una mejor impresión en páginas múltiples */
+            .section-title {
+                page-break-after: avoid;
+            }
+
+            .collapsible-content {
+                page-break-inside: avoid;
+            }
+
+            /* Asegura que las tablas se impriman correctamente */
+            .table {
+                border-collapse: collapse;
+                color: #000;
+            }
+
+            .table th, .table td {
+                border: 1px solid #ddd;
+            }
+            .table th{
+                font-weight: 700;
+                border: 1px solid #000;
+                color:#000;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="quotation-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="avatar-container">
+                <div class="avatar-placeholder">
+                    <svg version="1.1" class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 90 99" style="enable-background:new 0 0 90 99;" xml:space="preserve" width="64">
+                        <g>
+                          <path class="blue__logo" d="M85.38,6.83l-60.64,86.8H6.65l60.51-86.8H85.38z"/>
+                          <polygon class="blue__logo" points="21.99,6.83 6.65,6.83 6.65,83.96 21.99,61.96 	"/>
+                          <polygon class="blue__logo" points="70.04,93.63 85.38,93.63 85.38,16.5 70.04,38.5 	"/>
+                        </g>
+                      </svg>
+                </div>
+            </div>
+            <h1 class="developer-name">ENRIQUE <span>LAZO BELLO</span></h1>
+            <p class="developer-title">Software Engineer & Full Stack Developer</p>
+        </div>
+
+        <!-- Client Information -->
+        <div class="client-info">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Cliente:</div>
+                    <div class="info-value">Craft</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Marca:</div>
+                    <div class="info-value">Color Centro</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Concepto:</div>
+                    <div class="info-value">Modificaciones en la Web de Color Centro</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Uso:</div>
+                    <div class="info-value">Web</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Fecha:</div>
+                    <div class="info-value">18/3/2025</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Tiempo de desarrollo:</div>
+                    <div class="info-value">2 semanas (lunes a viernes)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quotation Items -->
+        <div class="quotation-items">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="10%" class="bold">Item</th>
+                            <th width="70%" class="bold">Detalle</th>
+                            <th width="20%" class="bold">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Modificaciones en la Web de Color Centro</td>
+                            <td>S/ 2,500.00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2" class="text-end">Total</td>
+                            <td>S/ 2,500.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="note mt-2 text-red bold">No Incluye IGV.</p>
+            </div>
+        </div>
+
+        <!-- Service Details -->
+        <div class="service-details">
+            <!-- Equipo Asignado -->
+            <h3 class="section-title collapsible-section">
+                <i class="fas fa-users"></i> Equipo Asignado
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content">
+                <ul class="detail-list">
+                    <li>1 Full Stack Developer: Desarrollará las modificaciones del front-end y back-end.</li>
+                    <li>1 Project Manager: Supervisará el proyecto y será el punto de contacto principal.</li>
+                </ul>
+            </div>
+
+            <!-- Propuesta tecnológica -->
+            <h3 class="section-title collapsible-section">
+                <i class="fas fa-laptop-code"></i> Propuesta Tecnológica
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content">
+                <h4 class="section-subtitle">Modificaciones en la Web de Color Centro:</h4>
+                <ul class="detail-list">
+                    <li>Reemplazo del botón "WhatsApp" por "Contactos" en el menú principal.</li>
+                    <li>Renombrar sección "Contact Center" a "Contacto".</li>
+                    <li>Eliminación del icono flotante de WhatsApp en toda la web.</li>
+                    <li>Implementación de visualización de información de tiendas como campos estáticos.</li>
+                    <li>Rediseño de la sección de contacto con información detallada de las tiendas.</li>
+                </ul>
+
+                <h4 class="section-subtitle">Integración con CMS Existente:</h4>
+                <ul class="detail-list">
+                    <li>Reutilización de datos del sistema de mantenimiento de puntos de venta existente.</li>
+                    <li>Conexión con los datos como: Nombre, dirección, teléfono y horarios de atención.</li>
+                    <li>Configuración para permitir operaciones CRUD sobre la información de tiendas.</li>
+                </ul>
+
+                <h4 class="section-subtitle">Optimización para Dispositivos Móviles:</h4>
+                <ul class="detail-list">
+                    <li>Diseño responsive para garantizar la visualización correcta en diferentes dispositivos.</li>
+                    <li>Adaptación de la sección de contacto para interfaces táctiles.</li>
+                </ul>
+            </div>
+
+            <!-- Entregables -->
+            <h3 class="section-title collapsible-section">
+                <i class="fas fa-box-open"></i> Entregables
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content">
+                <p>Se entregarán únicamente los archivos modificados, como se ha realizado en proyectos anteriores:</p>
+                <ul class="detail-list">
+                    <li>Archivos modificados para implementar los cambios solicitados.</li>
+                    <li>Script de la base de datos con las modificaciones realizadas, que impactará únicamente en los registros necesarios.</li>
+                </ul>
+            </div>
+
+            <!-- Fases -->
+            <h3 class="section-title collapsible-section">
+                <i class="fas fa-tasks"></i> Fases del Proyecto
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content phases">
+                <div class="progress-bars">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Acceso a las copias de seguridad</span>
+                            <span class="badge badge-percent">10%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Configuración de entorno de desarrollo local</span>
+                            <span class="badge badge-percent">10%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Modificación del Menú Principal y Eliminación de WhatsApp</span>
+                            <span class="badge badge-percent">20%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Renombrar Sección Contact Center e Implementar Tiendas</span>
+                            <span class="badge badge-percent">30%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Integración con CMS de Puntos de Venta</span>
+                            <span class="badge badge-percent">20%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Implementación y Despliegue</span>
+                            <span class="badge badge-percent">10%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Condiciones -->
+            <h3 class="section-title collapsible-section">
+                <i class="fas fa-file-contract"></i> Condiciones
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content">
+                <div class="conditions">
+                    <ul class="detail-list">
+                        <li>El proyecto iniciará al día siguiente hábil de recibir el correo de aprobación del presupuesto.</li>
+                        <li>Las modificaciones tienen una garantía de 6 meses.</li>
+                        <li>Se harán hasta 5 sesiones con cliente para explicar las modificaciones, paso a su entorno de pruebas o consultas generales. Las sesiones serán 1 hora cada una. Las sesiones adicionales tendrán un costo de S/ 100.00</li>
+                        <li>Los tiempos no se verán afectados por las revisiones del cliente.</li>
+                        <li>Deben enviar una copia actualizada de los archivos del servidor de producción, incluyendo una copia actual de la base de datos.</li>
+                        <li>El servidor de pruebas también debe tener una copia actualizada de los archivos del servidor de producción, incluyendo una copia actual de la base de datos.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Condiciones de Pago -->
+            <!--<h3 class="section-title collapsible-section">
+                <i class="fas fa-money-bill-wave"></i> Condiciones de Pago
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content">
+                <ul class="detail-list">
+                    <li><span class="badge badge-blue me-2">40%</span> Al iniciar el proyecto</li>
+                    <li><span class="badge badge-blue me-2">40%</span> Al completar la integración del CMS</li>
+                    <li><span class="badge badge-blue me-2">20%</span> Después del despliegue en producción</li>
+                </ul>
+                <p class="note">El pago debe realizarse dentro de los 7 días calendario después de presentado cada entregable.</p>
+            </div>  -->
+
+            <!-- Limitaciones de la garantía -->
+            <h3 class="section-title collapsible-section">
+                <i class="fas fa-shield-alt"></i> Limitaciones de la Garantía
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content warranty">
+                <h4 class="section-subtitle">Horario de atención:</h4>
+                <p>Lunes a Viernes 9:00 a 18:00 horas</p>
+
+                <h4 class="section-subtitle">La garantía corresponde únicamente al funcionamiento de las modificaciones implementadas:</h4>
+                <ul class="detail-list">
+                    <li>Funcionamiento correcto del enlace "Contactos" en el menú principal</li>
+                    <li>Visualización correcta de la información de tiendas</li>
+                    <li>Funcionamiento adecuado de la integración con el CMS</li>
+                    <li>Correcta visualización responsive en dispositivos móviles</li>
+                </ul>
+                <!--
+                <div class="response-times mt-4">
+                    <h4 class="section-subtitle">Tiempo de respuesta:</h4>
+                    <ul class="detail-list">
+                        <li>Caída del sitio por modificaciones implementadas: <span class="badge badge-blue">2 horas</span>
+                            <div class="note">Excepciones: Pago de servicios (Servidores, Dominios)</div>
+                        </li>
+                        <li>Problemas con la visualización de información de tiendas: <span class="badge badge-blue">4 horas</span>
+                            <div class="note">Excepciones: Fallas en el CMS existente</div>
+                        </li>
+                        <li>Preguntas generales: <span class="badge badge-blue">1 día</span></li>
+                    </ul>
+                </div>
+                -->
+            </div>
+
+            <!-- Sección de Aprobación -->
+            <h3 class="section-title collapsible-section">
+                <i class="fas fa-check-circle"></i> Aprobación
+                <i class="fas fa-chevron-down rotate-icon"></i>
+            </h3>
+            <div class="collapsible-content">
+                <div class="approval-section">
+                    <p>Para aceptar esta propuesta, por favor firme a continuación o envíe un correo electrónico confirmando su aceptación.</p>
+
+                    <div class="signature-area">
+                        <div>
+                            <div class="signature-box"></div>
+                            <div class="signature-title">Cliente: CRAFT</div>
+                        </div>
+                        <div>
+                            <div class="signature-box"></div>
+                            <div class="signature-title">Proveedor: Enrique Lazo Bello</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 Enrique Lazo Bello - Software Engineer & Full Stack Developer</p>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <button class="print-btn" id="printBtn" title="Imprimir Cotización">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Collapsible sections functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const collapsibles = document.querySelectorAll('.collapsible-section');
+
+            collapsibles.forEach(function(collapsible) {
+                collapsible.addEventListener('click', function() {
+                    // Toggle the 'rotate' class on the chevron icon
+                    const icon = this.querySelector('.rotate-icon');
+                    icon.classList.toggle('rotate');
+
+                    // Toggle the 'expanded' class on the content
+                    const content = this.nextElementSibling;
+                    content.classList.toggle('expanded');
+                });
+            });
+
+            // Print functionality
+            const printBtn = document.getElementById('printBtn');
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+
+            // Expand first section by default
+            if (collapsibles.length > 0) {
+                collapsibles[0].click();
+            }
+        });
+    </script>
+</body>
+</html>
